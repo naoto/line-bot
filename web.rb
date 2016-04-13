@@ -23,11 +23,11 @@ post '/message' do
   message = params['message']
   header = {
     "Content-Type" => "application/json; charser=UTF-8",
-    'X-Line-ChannelID' => ENV['channel_id'],
-    'X-Line-ChannelSecret' => ENV['channel_secret'],
-    'X-Line-Trusted-User-With-ACL' => ENV['channel_mid']
+    'X-Line-ChannelID' => ENV['channel_id'].to_s,
+    'X-Line-ChannelSecret' => ENV['channel_secret'].to_s,
+    'X-Line-Trusted-User-With-ACL' => ENV['channel_mid'].to_s
   }
-  puts "ENV = #{ENV['channel_id']}"
+  puts "mid => #{@@mid}"
   body = {
     to: [@@mid],
     toChannel: 1383378250,
