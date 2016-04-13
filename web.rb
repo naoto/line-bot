@@ -27,6 +27,7 @@ post '/message' do
     'X-Line-ChannelSecret' => ENV['channel_secret'],
     'X-Line-Trusted-User-With-ACL' => ENV['channel_mid']
   }
+  puts "ENV = #{ENV['channel_id']}"
   body = {
     to: [@@mid],
     toChannel: 1383378250,
