@@ -3,10 +3,13 @@ require 'json'
 
 configure do
   @@message = []
+  @@mid = ""
 end
 
 post '/callback' do
   line_mes = JSON.parse(request.body.read)["result"][0]
+  @@mid = line_me['from']
+  puts line_me
   @@message << line_mes["content"]["text"]
 end
 
@@ -25,7 +28,7 @@ post '/message' do
     'X-Line-Trusted-User-With-ACL' => ENV['channel_mid']
   }
   body = {
-    to: ["送信相手のMID"],
+    to: @@mid,
     toChannel:1383378250,
     eventType:"138311608800106203",
     content:{contentType:1, toType:1, text: message }
