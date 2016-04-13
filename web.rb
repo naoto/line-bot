@@ -20,7 +20,7 @@ get '/message' do
 end
 
 post '/message' do
-  message = param[:message]
+  message = params[:message]
   header = {
     "Content-Type" => "application/json; charser=UTF-8",
     'X-Line-ChannelID' => ENV['channel_id'],
