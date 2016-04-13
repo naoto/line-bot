@@ -8,8 +8,8 @@ end
 
 post '/callback' do
   line_mes = JSON.parse(request.body.read)["result"][0]
-  @@mid = line_me['from']
-  puts line_me
+  @@mid = line_mes['from']
+  puts line_mes
   @@message << line_mes["content"]["text"]
 end
 
