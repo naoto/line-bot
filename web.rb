@@ -29,7 +29,7 @@ post '/message' do
   }
   body = {
     to: [@@mid],
-    toChannel:1383378250,
+    toChannel: 1383378250,
     eventType:"138311608800106203",
     content:{contentType:1, toType:1, text: message }
   }
@@ -37,6 +37,7 @@ post '/message' do
   uri = URI.parse('https://trialbot-api.line.me')
   client = Net::HTTP.new(uri.host, 443)
   client.use_ssl = true
-  client.post("/v1/events", body.to_json, header)
+  result = client.post("/v1/events", body.to_json, header)
+  result.inspect
 end
 
